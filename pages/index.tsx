@@ -1,18 +1,18 @@
 import { NextPage } from "next";
 import Head from "next/head";
 
-import Main from "components/screens/main";
+import Dictionary from "components/screens/dictionary";
 
-const MainPage: NextPage = () => {
+const DictionaryPage: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Home</title>
+                <title>Open Dictionary</title>
             </Head>
 
-            <Main />
+            <Dictionary />
         </>
     );
 };
 
-export default MainPage;
+export default DictionaryPage;

@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FormEventHandler } from "react";
 
 import ButtonPrimary from "components/common/Button/ButtonPrimary";
-import SearchInput from "components/screens/main/components/SearchInput";
+import SearchInput from "components/screens/dictionary/components/SearchInput";
 
 interface LexiconFormProps {
     onSubmit: FormEventHandler<HTMLFormElement>;
