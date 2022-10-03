@@ -14,7 +14,7 @@ interface AppBarProps {
 }
 
 const AppBar = ({ leftSideButton, pageName, rightSide }: AppBarProps) => {
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffectOnce(() => {
@@ -22,7 +22,7 @@ const AppBar = ({ leftSideButton, pageName, rightSide }: AppBarProps) => {
     });
 
     const toggleTheme = () => {
-        setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
+        setTheme(resolvedTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
     };
 
     if (!mounted) return null;
@@ -38,7 +38,7 @@ const AppBar = ({ leftSideButton, pageName, rightSide }: AppBarProps) => {
                 <div>
                     {rightSide}
                     <IconButton onClick={toggleTheme}>
-                        {theme === Theme.DARK ? (
+                        {resolvedTheme === Theme.LIGHT ? (
                             <MdOutlineDarkMode />
                         ) : (
                             <MdOutlineLightMode />

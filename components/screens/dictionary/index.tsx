@@ -37,7 +37,7 @@ const Main = ({}: MainProps) => {
                         <MdOutlineMenu />
                     </IconButton>
                 }
-                pageName="Dictionary"
+                pageName="Quick Dictionary"
             />
 
             <Sidebar
