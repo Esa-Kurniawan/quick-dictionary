@@ -1,8 +1,8 @@
 import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
 import { useAudio, useUpdateEffect } from "react-use";
-import { Lexicon } from "types";
 
-import MeaningListItem from "./MeaningListItem";
+import { Lexicon } from "../../types";
+import ListOfMeanings from "./MeaningListItem";
 
 const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
     const [pronunciationAudio, pronunciationState, pronunciationControls] =
@@ -35,11 +35,7 @@ const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
                 </div>
             </div>
 
-            <ul className="flex flex-col gap-4">
-                {lexicon.meanings.map((meaning, meaningIndex) => (
-                    <MeaningListItem key={meaningIndex} meaning={meaning} />
-                ))}
-            </ul>
+            <ListOfMeanings meanings={lexicon.meanings} />
 
             <p>Origin: {lexicon.origin}</p>
         </div>
