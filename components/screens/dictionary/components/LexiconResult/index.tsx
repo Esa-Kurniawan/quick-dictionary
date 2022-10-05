@@ -2,12 +2,16 @@ import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
 import { useAudio, useUpdateEffect } from "react-use";
 
 import { Lexicon } from "../../types";
-import ListOfMeanings from "./MeaningListItem";
+import ListOfMeanings from "./ListOfMeanings";
 
 const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
+    const phonetic = lexicon.phonetics.find((returnedPhonetic) =>
+        returnedPhonetic.hasOwnProperty("audio")
+    );
+
     const [pronunciationAudio, pronunciationState, pronunciationControls] =
         useAudio({
-            src: lexicon.phonetics[0].audio as string,
+            src: phonetic.audio,
         });
 
     const togglePronunciationPlay = () => {
@@ -31,7 +35,7 @@ const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
                     <h1 className="text-4xl text-gray-600 dark:text-gray-300 font-bold">
                         {lexicon.word}
                     </h1>
-                    <span>{lexicon.phonetics[0].text}</span>
+                    <span>{phonetic.text}</span>
                 </div>
             </div>
 
