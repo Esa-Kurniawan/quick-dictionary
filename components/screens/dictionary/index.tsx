@@ -39,6 +39,13 @@ const Main = () => {
         if (isSuccess) return <LexiconResult lexicon={lexicon} />;
     };
 
+    console.log(
+        "base url",
+        process.env.NEXT_PUBLIC_OXFORD_DICTIONARIES_BASE_URL
+    );
+    console.log("app id", process.env.NEXT_PUBLIC_OXFORD_DICTIONARIES_APP_ID);
+    console.log("app key", process.env.NEXT_PUBLIC_OXFORD_DICTIONARIES_APP_KEY);
+
     return (
         <>
             <AppBar
