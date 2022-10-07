@@ -7,6 +7,8 @@ import { Theme } from "types";
 
 import { IconButton } from "components/common/Button";
 
+import Tooltip from "./Tooltip";
+
 interface AppBarProps {
     leftSideButton: React.ReactElement;
     pageName: string;
@@ -39,9 +41,13 @@ const AppBar = ({ leftSideButton, pageName, rightSide }: AppBarProps) => {
                     {rightSide}
                     <IconButton onClick={toggleTheme}>
                         {resolvedTheme === Theme.LIGHT ? (
-                            <MdOutlineDarkMode />
+                            <Tooltip title="Enable dark mode">
+                                <MdOutlineDarkMode />
+                            </Tooltip>
                         ) : (
-                            <MdOutlineLightMode />
+                            <Tooltip title="Enable light mode">
+                                <MdOutlineLightMode />
+                            </Tooltip>
                         )}
                     </IconButton>
                 </div>

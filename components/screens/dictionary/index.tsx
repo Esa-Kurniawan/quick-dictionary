@@ -1,10 +1,13 @@
+import { InferGetStaticPropsType } from "next";
 import { FormEvent, useState } from "react";
 
-import { isError, useQuery } from "@tanstack/react-query";
-import lexicon from "lexicon.json";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import fsPromises from "fs/promises";
+import path from "path";
 import { MdOutlineMenu } from "react-icons/md";
-import { useAudio, useToggle } from "react-use";
-import { Language, Lexicon } from "types";
+import { useEffectOnce, useToggle } from "react-use";
+import { Language } from "types";
 
 import AppBar from "components/common/AppBar";
 import { IconButton } from "components/common/Button";
@@ -12,31 +15,28 @@ import Sidebar from "components/common/Sidebar";
 
 import LexiconForm from "./components/LexiconForm";
 import LexiconResult from "./components/LexiconResult";
-import { getLexicons } from "./proxy/getLexicons";
+import { getLexicon } from "./proxies/getLexicon";
 
-interface MainProps {}
-
-const Main = ({}: MainProps) => {
+const Main = () => {
     const [word, setWord] = useState<string>("");
+
     const {
-        data: lexicon,
-        isFetching: isLexiconFetching,
-        isError: isLexiconError,
-        isSuccess: isLexiconSuccess,
+        isError,
+        isFetching,
+        isSuccess,
         refetch: refetchLexicon,
-    } = useQuery(["lexicon"], () => getLexicons(Language.ENGLISH, word), {
+        data: lexicon,
+    } = useQuery(["lexicon"], () => getLexicon(Language.US_ENGLISH, word), {
         enabled: false,
     });
 
     const [isSidebarOpen, toggleSidebarOpen] = useToggle(false);
 
     const toDisplayLexicon = () => {
-        if (isLexiconFetching) return <div>Loading...</div>;
-        if (isLexiconError)
-            return (
-                <div>Ops, something went wrong, Please try again later.</div>
-            );
-        if (isLexiconSuccess) return <LexiconResult lexicon={lexicon} />;
+        if (isFetching) return <div>Loading...</div>;
+        if (isError)
+            return <div>Ops, something went wrong, Please try again later</div>;
+        if (isSuccess) return <LexiconResult lexicon={lexicon} />;
     };
 
     return (

@@ -11,7 +11,7 @@ interface TooltipProps {
 
 const Tooltip = ({ children, title, placement = "top" }: TooltipProps) => {
     return (
-        <div className="w-fit h-fit">
+        <>
             <Tippy
                 placement={placement}
                 interactive={true}
@@ -24,7 +24,7 @@ const Tooltip = ({ children, title, placement = "top" }: TooltipProps) => {
             >
                 {children}
             </Tippy>
-        </div>
+        </>
     );
 };
 
