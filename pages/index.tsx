@@ -1,20 +1,25 @@
-import { NextPage } from "next";
 import Head from "next/head";
+import { ReactElement } from "react";
 
-import Dictionary from "components/screens/dictionary";
+import { NextPageWithLayout } from "types";
 
-const DictionaryPage: NextPage = () => {
-    console.log(process.env.NEXT_PUBLIC_DICTIONARY_API_BASE_URL);
+import DictionaryScreen from "components/screens/dictionary";
+import DictionaryLayout from "components/screens/dictionary/components/DictionaryLayout";
 
+const DictionaryPage: NextPageWithLayout = () => {
     return (
         <>
             <Head>
                 <title>Quick Dictionary</title>
             </Head>
 
-            <Dictionary />
+            <DictionaryScreen />
         </>
     );
+};
+
+DictionaryPage.getLayout = function getLayout(page: ReactElement) {
+    return <DictionaryLayout>{page}</DictionaryLayout>;
 };
 
 export default DictionaryPage;

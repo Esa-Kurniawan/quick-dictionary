@@ -5,10 +5,10 @@ import SearchInput from "components/screens/dictionary/components/SearchInput";
 
 interface LexiconFormProps {
     onSubmit: () => void;
-    onChangeWordInput: ChangeEventHandler<HTMLInputElement>;
+    onInputChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const LexiconForm = ({ onSubmit, onChangeWordInput }: LexiconFormProps) => {
+const LexiconForm = ({ onSubmit, onInputChange }: LexiconFormProps) => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onSubmit();
@@ -16,7 +16,7 @@ const LexiconForm = ({ onSubmit, onChangeWordInput }: LexiconFormProps) => {
 
     return (
         <form className="" onSubmit={handleSubmit}>
-            <SearchInput onChange={onChangeWordInput} />
+            <SearchInput onChange={onInputChange} />
         </form>
     );
 };

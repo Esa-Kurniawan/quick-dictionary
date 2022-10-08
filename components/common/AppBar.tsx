@@ -42,11 +42,15 @@ const AppBar = ({ leftSideButton, pageName, rightSide }: AppBarProps) => {
                     <IconButton onClick={toggleTheme}>
                         {resolvedTheme === Theme.LIGHT ? (
                             <Tooltip title="Enable dark mode">
-                                <MdOutlineDarkMode />
+                                <span>
+                                    <MdOutlineDarkMode />
+                                </span>
                             </Tooltip>
                         ) : (
                             <Tooltip title="Enable light mode">
-                                <MdOutlineLightMode />
+                                <span>
+                                    <MdOutlineLightMode />
+                                </span>
                             </Tooltip>
                         )}
                     </IconButton>

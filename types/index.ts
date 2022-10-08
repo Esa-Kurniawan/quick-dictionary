@@ -1,15 +1,11 @@
-// for wordnik api
-export enum Language {
-    US_ENGLISH = "en-us",
-    UK_ENGLISH = "en-gb",
-    FRENCH = "fn",
-}
+import { NextPage } from "next";
+import { ReactElement, ReactNode } from "react";
 
 export enum Theme {
     DARK = "dark",
     LIGHT = "light",
 }
 
-export enum Endpoint {
-    ENTRIES = "entries",
-}
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+    getLayout?: (page: ReactElement) => ReactNode;
+};

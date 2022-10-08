@@ -1,17 +1,20 @@
 import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
-import { useAudio, useUpdateEffect } from "react-use";
+import { useAudio } from "react-use";
+
+import Tooltip from "components/common/Tooltip";
 
 import { Lexicon } from "../../types";
-import ListOfMeanings from "./ListOfLexicalEntries";
+import ListOfMeanings from "./ListOfMeanings";
 
 const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
-    const phonetic = lexicon.lexicalEntries[0].entries[0].pronunciations.find(
-        (pronunciation) => pronunciation.hasOwnProperty("audioFile")
+    const phonetic = lexicon.phonetics.find(
+        (returnedPhonetic) =>
+            returnedPhonetic.hasOwnProperty("audio") &&
+            returnedPhonetic.hasOwnProperty("text")
     );
-
     const [pronunciationAudio, pronunciationState, pronunciationControls] =
         useAudio({
-            src: phonetic?.audioFile ?? "",
+            src: phonetic?.audio ?? "",
         });
 
     const togglePronunciationPlay = () => {
@@ -26,25 +29,28 @@ const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
                 {pronunciationAudio}
                 <button className="" onClick={togglePronunciationPlay}>
                     {pronunciationState.playing ? (
-                        <MdOutlineVolumeUp />
+                        <Tooltip title="Play the spelling audio">
+                            <span>
+                                <MdOutlineVolumeUp />
+                            </span>
+                        </Tooltip>
                     ) : (
-                        <MdOutlineVolumeOff />
+                        <Tooltip title="Unplay the spelling audio">
+                            <span>
+                                <MdOutlineVolumeOff />
+                            </span>
+                        </Tooltip>
                     )}
                 </button>
                 <div className="flex flex-col">
                     <h1 className="text-4xl text-gray-600 dark:text-gray-300 font-bold">
                         {lexicon.word}
                     </h1>
-                    <span>{phonetic?.phoneticSpelling}</span>
+                    <span>{phonetic?.text}</span>
                 </div>
             </div>
 
-            <ListOfMeanings lexicalEntries={lexicon.lexicalEntries} />
-
-            <p className="mt-4">
-                <span className="font-mono italic">Origin:</span>{" "}
-                {lexicon.lexicalEntries[0].entries[0].etymologies}
-            </p>
+            <ListOfMeanings meanings={lexicon.meanings} />
         </div>
     );
 };

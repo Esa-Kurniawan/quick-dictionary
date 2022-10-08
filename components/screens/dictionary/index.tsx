@@ -1,17 +1,6 @@
-import { InferGetStaticPropsType } from "next";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import fsPromises from "fs/promises";
-import path from "path";
-import { MdOutlineMenu } from "react-icons/md";
-import { useEffectOnce, useToggle } from "react-use";
-import { Language } from "types";
-
-import AppBar from "components/common/AppBar";
-import { IconButton } from "components/common/Button";
-import Sidebar from "components/common/Sidebar";
 
 import LexiconForm from "./components/LexiconForm";
 import LexiconResult from "./components/LexiconResult";
@@ -26,11 +15,11 @@ const Main = () => {
         isSuccess,
         refetch: refetchLexicon,
         data: lexicon,
-    } = useQuery(["lexicon"], () => getLexicon(Language.US_ENGLISH, word), {
+    } = useQuery(["lexicon"], () => getLexicon(word), {
         enabled: false,
     });
 
-    const [isSidebarOpen, toggleSidebarOpen] = useToggle(false);
+    console.log(lexicon)
 
     const toDisplayLexicon = () => {
         if (isFetching) return <div>Loading...</div>;
@@ -39,41 +28,14 @@ const Main = () => {
         if (isSuccess) return <LexiconResult lexicon={lexicon} />;
     };
 
-    console.log(
-        "base url",
-        process.env.NEXT_PUBLIC_OXFORD_DICTIONARIES_BASE_URL
-    );
-    console.log("app id", process.env.NEXT_PUBLIC_OXFORD_DICTIONARIES_APP_ID);
-    console.log("app key", process.env.NEXT_PUBLIC_OXFORD_DICTIONARIES_APP_KEY);
-
     return (
-        <>
-            <AppBar
-                leftSideButton={
-                    <IconButton onClick={() => toggleSidebarOpen(true)}>
-                        <MdOutlineMenu />
-                    </IconButton>
-                }
-                pageName="Quick Dictionary"
+        <div className="container">
+            <LexiconForm
+                onSubmit={refetchLexicon}
+                onInputChange={(e) => setWord(e.target.value.toLowerCase())}
             />
-
-            <Sidebar
-                open={isSidebarOpen}
-                onClose={() => toggleSidebarOpen(false)}
-            />
-
-            <main className="mt-24">
-                <div className="container">
-                    <LexiconForm
-                        onSubmit={refetchLexicon}
-                        onChangeWordInput={(e) =>
-                            setWord(e.target.value.toLowerCase())
-                        }
-                    />
-                    {toDisplayLexicon()}
-                </div>
-            </main>
-        </>
+            {toDisplayLexicon()}
+        </div>
     );
 };
 
