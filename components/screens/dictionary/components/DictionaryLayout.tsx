@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
 import { MdOutlineMenu } from "react-icons/md";
 import { useToggle } from "react-use";
@@ -9,7 +9,7 @@ import Sidebar from "components/common/Sidebar";
 import Tooltip from "components/common/Tooltip";
 
 interface DictionaryLayoutProps {
-    children: ReactNode;
+    children: ReactElement;
 }
 
 const DictionaryLayout = ({ children }: DictionaryLayoutProps) => {
@@ -17,7 +17,7 @@ const DictionaryLayout = ({ children }: DictionaryLayoutProps) => {
     return (
         <>
             <AppBar
-                leftSideButton={
+                leftColumnButton={
                     <Tooltip title="Open sidebar">
                         <IconButton onClick={() => toggleSidebarOpen(true)}>
                             <MdOutlineMenu />
@@ -32,7 +32,7 @@ const DictionaryLayout = ({ children }: DictionaryLayoutProps) => {
                 onClose={() => toggleSidebarOpen(false)}
             />
 
-            <main className="mt-24">{children}</main>
+            <main className="mt-24 mb-4">{children}</main>
         </>
     );
 };

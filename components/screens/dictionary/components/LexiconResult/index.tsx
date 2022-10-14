@@ -1,3 +1,5 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { fadeMotions } from "lib/fadeMotions";
 import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
 import { useAudio } from "react-use";
 
@@ -9,40 +11,33 @@ import ListOfMeanings from "./ListOfMeanings";
 const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
     const phonetic = lexicon.phonetics.find(
         (returnedPhonetic) =>
-            returnedPhonetic.hasOwnProperty("audio") &&
-            returnedPhonetic.hasOwnProperty("text")
+            returnedPhonetic.audio !== "" && returnedPhonetic.text !== ""
     );
     const [pronunciationAudio, pronunciationState, pronunciationControls] =
         useAudio({
             src: phonetic?.audio ?? "",
         });
 
-    const togglePronunciationPlay = () => {
-        pronunciationState.playing
-            ? pronunciationControls.pause()
-            : pronunciationControls.play();
-    };
-
     return (
-        <div className="mt-6">
-            <div className="flex gap-x-2">
+        <motion.div {...fadeMotions} className="mt-6">
+            <div className="flex items-center gap-x-2">
                 {pronunciationAudio}
-                <button className="" onClick={togglePronunciationPlay}>
-                    {pronunciationState.playing ? (
-                        <Tooltip title="Play the spelling audio">
-                            <span>
-                                <MdOutlineVolumeUp />
-                            </span>
-                        </Tooltip>
-                    ) : (
-                        <Tooltip title="Unplay the spelling audio">
-                            <span>
-                                <MdOutlineVolumeOff />
-                            </span>
-                        </Tooltip>
-                    )}
-                </button>
-                <div className="flex flex-col">
+
+                {pronunciationState.playing ? (
+                    <Tooltip title="Pause spelling audio">
+                        <button onClick={pronunciationControls.pause}>
+                            <MdOutlineVolumeUp />
+                        </button>
+                    </Tooltip>
+                ) : (
+                    <Tooltip title="Play spelling audio">
+                        <button onClick={pronunciationControls.play}>
+                            <MdOutlineVolumeOff />
+                        </button>
+                    </Tooltip>
+                )}
+
+                <div className="">
                     <h1 className="text-4xl text-gray-600 dark:text-gray-300 font-bold">
                         {lexicon.word}
                     </h1>
@@ -51,7 +46,7 @@ const LexiconResult = ({ lexicon }: { lexicon: Lexicon }) => {
             </div>
 
             <ListOfMeanings meanings={lexicon.meanings} />
-        </div>
+        </motion.div>
     );
 };
 

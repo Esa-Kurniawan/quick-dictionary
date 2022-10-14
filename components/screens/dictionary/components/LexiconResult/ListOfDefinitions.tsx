@@ -5,9 +5,12 @@ interface ListOfDefinitionsProps {
 }
 
 const ListOfDefinitions = ({ definitions }: ListOfDefinitionsProps) => (
-    <ol className="pl-12 flex flex-col gap-2 mt-2 list-decimal">
+    <ol className="space-y-3 mt-2 list-decimal">
         {definitions.map((definition, definitionIndex) => (
-            <li key={definitionIndex}>
+            <li
+                className="bg-gray-200/50 dark:bg-gray-700/50 sm-padding rounded-lg"
+                key={definitionIndex}
+            >
                 <h3>{definition.definition}</h3>
                 {definition.hasOwnProperty("example") && (
                     <p className="">{`"${definition.example}"`}</p>

@@ -1,6 +1,5 @@
-import { ChangeEventHandler, FormEvent, FormEventHandler } from "react";
+import { ChangeEventHandler, FormEvent } from "react";
 
-import ButtonPrimary from "components/common/Button/ButtonPrimary";
 import SearchInput from "components/screens/dictionary/components/SearchInput";
 
 interface LexiconFormProps {
@@ -15,7 +14,7 @@ const LexiconForm = ({ onSubmit, onInputChange }: LexiconFormProps) => {
     };
 
     return (
-        <form className="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <SearchInput onChange={onInputChange} />
         </form>
     );

@@ -1,6 +1,6 @@
 export interface Phonetic {
     text?: string;
-    audio?: string;
+    audio: string;
     sourceUrl?: string;
     license?: License;
 }
