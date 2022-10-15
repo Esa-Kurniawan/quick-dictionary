@@ -15,7 +15,10 @@ const SearchInput = ({ onChange }: SearchInputProps) => {
                 onChange={onChange}
                 placeholder="Search word"
             />
-            <button className="absolute top-0 right-0 inset-y-0 aspect-square grid place-items-center">
+            <button
+                aria-label="Search word"
+                className="absolute top-0 right-0 inset-y-0 aspect-square grid place-items-center"
+            >
                 <MdOutlineSearch size={18} />
             </button>
         </div>

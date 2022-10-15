@@ -20,7 +20,7 @@ const DictionaryLayout = ({ children }: DictionaryLayoutProps) => {
                 leftColumnButton={
                     <Tooltip title="Open sidebar">
                         <IconButton onClick={() => toggleSidebarOpen(true)}>
-                            <MdOutlineMenu />
+                            <MdOutlineMenu aria-label="Open sidebar" />
                         </IconButton>
                     </Tooltip>
                 }

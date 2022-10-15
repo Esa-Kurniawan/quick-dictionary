@@ -39,7 +39,7 @@ const AppBar = ({
                     {isLightTheme ? (
                         <Tooltip title="Enable dark mode">
                             <IconButton onClick={() => toggleTheme(Theme.DARK)}>
-                                <MdOutlineDarkMode />
+                                <MdOutlineDarkMode aria-label="Enable dark mode" />
                             </IconButton>
                         </Tooltip>
                     ) : (
@@ -47,7 +47,7 @@ const AppBar = ({
                             <IconButton
                                 onClick={() => toggleTheme(Theme.LIGHT)}
                             >
-                                <MdOutlineLightMode />
+                                <MdOutlineLightMode aria-label="Enable light mode" />
                             </IconButton>
                         </Tooltip>
                     )}

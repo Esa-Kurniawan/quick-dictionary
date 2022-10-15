@@ -11,6 +11,10 @@ const DictionaryPage: NextPageWithLayout = () => {
         <>
             <Head>
                 <title>Quick Dictionary</title>
+                <meta
+                    name="description"
+                    content="Search any word to find their meanings, pronunctions, definitions, etc"
+                />
             </Head>
 
             <DictionaryScreen />
