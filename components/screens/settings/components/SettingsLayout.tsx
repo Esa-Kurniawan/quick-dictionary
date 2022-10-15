@@ -18,7 +18,7 @@ const SettingsLayout = ({ children }: SettingsLayoutProps) => {
         <>
             <AppBar
                 pageName="Settings"
-                leftSideButton={
+                leftColumnButton={
                     <Tooltip title="Back to home page">
                         <IconButton onClick={() => router.push("/")}>
                             <MdOutlineArrowBack />
