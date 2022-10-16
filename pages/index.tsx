@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { ReactElement } from "react";
+import { Suspense } from "react";
 
+import { ErrorBoundary } from "react-error-boundary";
 import { NextPageWithLayout } from "types";
 
 import DictionaryScreen from "components/screens/dictionary";

@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Quick Dictionary
 
-## Getting Started
+a dictionary app that take a word as an input and return a lexicon (definition, pronuncitions, etc) of that word
 
-First, run the development server:
+## Motivations
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+i created this project because i want to learn how to use an API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build With
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+-   [Next.js](https://nextjs.org/)
+-   [Tailwindcss](https://tailwindcss.com/)
+-   [headlessui](https://headlessui.com/)
+-   [Framer Motion](https://www.framer.com/)
+-   [next-theme](https://github.com/pacocoursey/next-themes)
+-   [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
+-   [react-icons](https://react-icons.github.io/react-icons/)
+-   [Tippy.js for React](https://github.com/atomiks/tippyjs-react)
+-   [react-query](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/)
+-   [Axios](https://github.com/axios/axios)
+-   [clsx](https://github.com/lukeed/clsx)
+-   [react-use](https://github.com/streamich/react-use)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Demo
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+view this project at: [Quick Dictionary](https://quick-dictionary.vercel.app/)
 
-## Learn More
+## Setup
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+After you fork this project navige to the repository and then open the command line and install the necessary packages
+`npm install`
+After that finished run the following script in your command line to run the application:
+`npm run dev`
+Once the server is running, go to http://localhost:3000 in your browser.
