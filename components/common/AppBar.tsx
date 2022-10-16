@@ -1,4 +1,4 @@
-import { ReactHTML, useState } from "react";
+import { ReactElement, ReactHTML, ReactNode, useState } from "react";
 
 import useTheme, { Theme } from "lib/useTheme";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
@@ -8,9 +8,9 @@ import { IconButton } from "components/common/Button";
 import Tooltip from "./Tooltip";
 
 interface AppBarProps {
-    leftColumnButton: React.ReactElement;
+    leftColumnButton: ReactElement;
     pageName: string;
-    rightColumn?: React.ReactNode;
+    rightColumn?: ReactNode;
     pageNameAs?: keyof ReactHTML;
 }
 
