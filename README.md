@@ -27,16 +27,16 @@ view this project at: [Quick Dictionary](https://quick-dictionary.vercel.app/)
 
 ## Setup
 
-After you fork this project navigate to the repository and then open the command line and install the necessary packages:
+After you fork this project, navigate to the repository, and then open the command line and install the necessary packages:
 
 ```sh
 npm install
 ```
 
-After the installation has finished run the following script in your command line in order to run the application:
+After the installation has finished, run the following script in order to run the application:
 
 ```sh
 npm run dev
 ```
 
-Once the server is running, go to http://localhost:3000 in your browser.
+Once the server is running, go to http://localhost:3000/ in your browser.
