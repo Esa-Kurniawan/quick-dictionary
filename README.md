@@ -2,9 +2,9 @@
 
 a dictionary app that take a word as an input and return a lexicon (definition, pronuncitions, etc) of that word
 
-## Motivations
+## Motivation
 
-i've never using an API before, so i try using one by created this dictionary web app
+i've never using an API before, so i went up to google and search for an api and found out some word api, and gave it a tried
 
 ## Build With
 
