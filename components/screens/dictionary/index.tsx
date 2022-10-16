@@ -24,6 +24,8 @@ const Main = () => {
         enabled: false,
     });
 
+    console.log(process.env.NEXT_PUBLIC_FREE_DICTIONARY_API_BASE_URL);
+
     return (
         <div className="container">
             <LexiconForm
