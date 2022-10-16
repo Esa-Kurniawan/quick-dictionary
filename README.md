@@ -4,7 +4,7 @@ a dictionary app that take a word as an input and return a lexicon (definition, 
 
 ## Motivations
 
-i created this project because i want to learn how to use an API
+i've never using an API before, so i try using one by created this dictionary web app
 
 ## Build With
 
